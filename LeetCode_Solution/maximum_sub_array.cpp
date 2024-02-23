@@ -48,7 +48,8 @@ public:
 int main()
 {
     Solution s;
-    vector<int> v = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    // vector<int> v = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    vector<int> v= {5,10, 5,-15,20};
     cout << s.maxSubArray(v);
     return 0;
 }
