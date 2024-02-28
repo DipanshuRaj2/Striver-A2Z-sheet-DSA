@@ -46,6 +46,29 @@ public:
         
     }
 };
+// int main()
+// {
+//     Solution sol;
+//     vector<int>nums = {0,1,0,3,12};
+//     sol.moveZeroes(nums);
+
+//     for(int i = 0; i<nums.size(); i++){
+//         cout<<nums[i]<<" ";
+//     }
+//    return 0;
+// }
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    void moveZeroes(vector<int>& arr) {
+        int i = 0;
+        int j = arr.size()-1;
+        while(i<=j){
+            if(arr[i])
+        }
+    }
+};
 int main()
 {
     Solution sol;
