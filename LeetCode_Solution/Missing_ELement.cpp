@@ -102,3 +102,34 @@ n == nums.length
 // }
 
 
+// #include <bits/stdc++.h>
+// using namespace std;
+// class Solution{
+// public:
+//     int missingNumber(vector<int>& a) {
+//         int N = a.size() + 1;
+//         vector<int>hash(N, 0);
+
+//         for (int i = 0; i < a.size(); i++) {
+//             hash[a[i]]++;
+//         }
+
+//         for (int i = 0; i < N; i++) {
+//             if (hash[i] == 0) {
+//                 return i;
+//             }
+//         }
+
+//         return -1; // indicate no missing number found
+//     }
+// };
+// int main()
+// {
+//     Solution sol;
+//     // vector<int>nums = {9,6,4,2,3,5,7,0,1};
+//     vector<int>nums = {0,1};
+//     cout<<(sol.missingNumber(nums));
+//    return 0;
+// }
+
+// using sum formula
