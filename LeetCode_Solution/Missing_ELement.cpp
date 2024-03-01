@@ -133,3 +133,57 @@ n == nums.length
 // }
 
 // using sum formula
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Solution{
+//     public:
+
+// int missingNumber(vector<int>&a){
+//     int n = a.size();
+//     int sum = (n*(n+1))/2;
+
+//     int sum2 = 0;
+//     for(int i = 0; i<a.size(); i++){
+//         sum2 = sum2+a[i];
+//     }
+//     int missing_Number = sum - sum2;
+//     return missing_Number;
+//  }
+// };
+// int main()
+// {
+    
+//     Solution sol;
+//     // vector<int>nums = {9,6,4,2,3,5,7,0,1};
+//     vector<int>nums = {0,1};
+//     cout<<(sol.missingNumber(nums));
+//    return 0;
+// }
+
+//using Xor 
+#include<bits/stdc++.h>
+using namespace std;
+class Solution{
+    public:
+    int missingNumber(vector<int>&a){
+        int n = a.size();
+        int xor1 = 0;
+        for(int i = 1; i<n; i++){
+            xor1 = xor1 ^ i;
+        }
+        int xor2 = 0;
+        for(int i = 1; i<n; i++){
+            xor2 = xor2 ^ a[i];
+        }
+       return xor1^xor2;
+
+    }
+};
+int main()
+{
+     Solution sol;
+    // vector<int>nums = {9,6,4,2,3,5,7,0,1};
+    vector<int>nums = {0,1};
+    cout<<(sol.missingNumber(nums));
+   return 0;
+}
