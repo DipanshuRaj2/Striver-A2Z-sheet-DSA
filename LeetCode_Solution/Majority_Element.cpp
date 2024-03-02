@@ -34,17 +34,29 @@ using namespace std;
 class Solution{
     public:
     int majorityElement(vector<int>& nums){
+        // int n = nums.size();
+        // for(int i = 0; i<n; i++){
+        //     int count = 0;
+        //     int ele = nums[i];
+        //     for(int j = 0; j<n; j++){
+        //         if(nums[j]==ele){
+        //             count++;
+        //         }
+        //     }
+        //     if(count > (n/2)){
+        //         return ele;
+        //     }
+        // }
+        // return -1;
+// using unorderd_map
         int n = nums.size();
+        unordered_map<int, int>mpp;
         for(int i = 0; i<n; i++){
-            int count = 0;
-            int ele = nums[i];
-            for(int j = 0; j<n; j++){
-                if(nums[j]==ele){
-                    count++;
-                }
-            }
-            if(count > (n/2)){
-                return ele;
+            mpp[nums[i]]++;
+        }
+        for(auto ele :mpp){
+            if(ele.second>n/2){
+                return ele.first;
             }
         }
         return -1;
