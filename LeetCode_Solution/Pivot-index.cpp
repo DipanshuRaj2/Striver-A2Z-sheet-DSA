@@ -31,35 +31,60 @@ The pivot index is 0.
 Left sum = 0 (no elements to the left of index 0)
 Right sum = nums[1] + nums[2] = 1 + -1 = 0*/
 
+// brute force
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Solution{
+//     public:
+//     int pivotIndex(vector<int>&nums) {
+//         for(int i = 0; i<nums.size(); i++){
+//             int leftSum = 0;
+
+//             for(int j = 0; j<i; j++) {
+//                 leftSum += nums[j];
+//             }
+
+//             int rightSum = 0;
+
+//             for(int k = i+1; k<nums.size(); k++){
+//                 rightSum += nums[k]; 
+//             }
+//             if(leftSum == rightSum) {
+//                 return i;
+//             }
+//         }
+//         return -1;
+//     }
+// };
+// int main()
+// {
+//     Solution sol;;
+
+//     vector<int>nums = {2,1,-1};
+//     cout<<sol.pivotIndex(nums);
+//    return 0;
+// }
+
+//efficent solution
 #include<bits/stdc++.h>
 using namespace std;
-class Solution{
-    public:
-    int pivotIndex(vector<int>&nums) {
-        for(int i = 0; i<nums.size(); i++){
-            int leftSum = 0;
-
-            for(int j = 0; j<i; j++) {
-                leftSum += nums[j];
-            }
-
-            int rightSum = 0;
-
-            for(int k = i+1; k<nums.size(); k++){
-                rightSum += nums[k]; 
-            }
-            if(leftSum == rightSum) {
-                return i;
-            }
-        }
-        return -1;
+int pivotIndex(vector<int>v){
+    int sum = 0;
+    for(int &ele: v){
+        sum += ele;
     }
-};
+    for(int i = 0; i<v.size(); i++){
+       int leftSum = 0;
+        if(leftSum == sum -v[i]-leftSum){
+            return i;
+        }
+        leftSum+=v[i];
+    }
+    return -1;
+}
 int main()
 {
-    Solution sol;;
-
     vector<int>nums = {2,1,-1};
-    cout<<sol.pivotIndex(nums);
+    cout<<pivotIndex(nums);
    return 0;
 }
