@@ -39,6 +39,46 @@ nums.length is even
 1 <= |nums[i]| <= 105
 nums consists of equal number of positive and negative integers.
  */
+// #include <bits/stdc++.h>
+// using namespace std;
+// class Solution
+// {
+// public:
+//     vector<int> rearrangeArray(vector<int> &nums)
+//     {
+//         int n = nums.size();
+//         vector<int> pos_arr;
+//         vector<int> neg_arr;
+
+//         for (int i = 0; i < n; i++)
+//         {
+//             if (nums[i] < 0)
+//                 neg_arr.push_back(nums[i]);
+            
+//             else{
+//                 pos_arr.push_back(nums[i]);
+//             }
+            
+//         }
+//         for(int i = 0; i<n/2; i++){
+//             nums[2*i] = pos_arr[i];
+//             nums[2*i+1] = neg_arr[i];
+//         }
+//         return nums;
+//     }
+// };
+// int main()
+// {
+//     Solution sol;
+//     vector<int>nums ={3,1,-2,-5,2,-4};
+//     vector<int> v = sol.rearrangeArray(nums);
+//     for(int i = 0; i<v.size(); i++){
+//         cout<<v[i]<<" ";
+//     }
+//     return 0;
+// }
+
+ // optimal approach
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
@@ -47,24 +87,23 @@ public:
     vector<int> rearrangeArray(vector<int> &nums)
     {
         int n = nums.size();
-        vector<int> pos_arr;
-        vector<int> neg_arr;
 
+        vector<int> ans;
+        int neg_Index = 1, pos_Index = 0; 
         for (int i = 0; i < n; i++)
         {
-            if (nums[i] < 0)
-                neg_arr.push_back(nums[i]);
-            
+            if (nums[i] < 0){
+                ans[neg_Index] = nums[i];
+                neg_Index += 2;
+                }
             else{
-                pos_arr.push_back(nums[i]);
+                ans[pos_Index] = nums[i];
+                pos_Index += 2;
             }
             
         }
-        for(int i = 0; i<n/2; i++){
-            nums[2*i] = pos_arr[i];
-            nums[2*i+1] = neg_arr[i];
-        }
-        return nums;
+
+        return ans;
     }
 };
 int main()
