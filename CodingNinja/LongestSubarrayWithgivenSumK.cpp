@@ -85,29 +85,64 @@ Sample Output 3 :
 
 //second solution is O(n^2);
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int maxLength(vector<int>v , int target){
+//     int n = v.size();
+//     int len = 0;
+//     for(int i = 0; i<n; i++){
+//         int sum = 0;
+//         for(int j = i; j<n; j++){
+//             sum += v[j]; 
+//             if(sum>target){
+//                 break;
+//             }
+//             if(sum == target){
+//                 len = max(len, j - i + 1);
+//             }
+//         } 
+//     }
+//     return len;
+// }
+// int main()
+// {
+//     vector<int>v = {1,2,3,1,1,1,1,1,4,2,3};
+//     int target = 3;
+//     cout<<maxLength(v, target);
+//    return 0;
+// }
+
+//  better approach t.complexity = O(n logn)
 #include<bits/stdc++.h>
 using namespace std;
-int maxLength(vector<int>v , int target){
-    int n = v.size();
-    int len = 0;
-    for(int i = 0; i<n; i++){
-        int sum = 0;
-        for(int j = i; j<n; j++){
-            sum += v[j]; 
-            if(sum>target){
-                break;
-            }
-            if(sum == target){
-                len = max(len, j - i + 1);
-            }
-        } 
+int getLongestSubArray(vector<int>&nums, int k){
+
+    int maxLen = 0;
+    int sum = 0;
+    map<int, int>prefixSumMap;
+    for(int i = 0; i<nums.size(); i++){
+        sum += nums[i];
+
+        if(sum == k){
+            maxLen = max(maxLen , i+1);
+        }
+
+        int rem = sum - k;
+        if(prefixSumMap.find(rem) != prefixSumMap.end()){
+            int len = i - prefixSumMap[rem];
+            maxLen = max(len, maxLen);
+        }
+        if(prefixSumMap.find(sum) == prefixSumMap.end()){ // it will written for edge case where if sum of next ele equal to sum then it will not update
+            prefixSumMap[sum] = i;
+        }
     }
-    return len;
+    return maxLen;
 }
 int main()
 {
-    vector<int>v = {1,2,3,1,1,1,1,1,4,2,3};
-    int target = 3;
-    cout<<maxLength(v, target);
+    vector<int>nums = {2,0,0,3}; //edge case example
+    int k = 3;
+    cout<<getLongestSubArray(nums , k);
+
    return 0;
 }
