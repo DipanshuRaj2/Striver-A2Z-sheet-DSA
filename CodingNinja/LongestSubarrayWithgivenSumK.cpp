@@ -113,36 +113,71 @@ Sample Output 3 :
 // }
 
 //  better approach t.complexity = O(n logn)
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int getLongestSubArray(vector<int>&nums, int k){
+
+//     int maxLen = 0;
+//     int sum = 0;
+//     map<int, int>prefixSumMap;
+//     for(int i = 0; i<nums.size(); i++){
+//         sum += nums[i];
+
+//         if(sum == k){
+//             maxLen = max(maxLen , i+1);
+//         }
+
+//         int rem = sum - k;
+//         if(prefixSumMap.find(rem) != prefixSumMap.end()){
+//             int len = i - prefixSumMap[rem];
+//             maxLen = max(len, maxLen);
+//         }
+//         if(prefixSumMap.find(sum) == prefixSumMap.end()){ // it will written for edge case where if sum of next ele equal to sum then it will not update
+//             prefixSumMap[sum] = i;
+//         }
+//     }
+//     return maxLen;
+// }
+// int main()
+// {
+//     vector<int>nums = {2,0,0,3}; //edge case example
+//     int k = 3;
+//     cout<<getLongestSubArray(nums , k);
+
+//    return 0;
+// }
+
+
+//optimal approach
 #include<bits/stdc++.h>
 using namespace std;
-int getLongestSubArray(vector<int>&nums, int k){
-
+int longestSubarrayWithSumK(vector<int> a, int k){
+    int left = 0, right = 0;
+    int sum = a[0];
     int maxLen = 0;
-    int sum = 0;
-    map<int, int>prefixSumMap;
-    for(int i = 0; i<nums.size(); i++){
-        sum += nums[i];
+    int n = a.size();
 
+    while(right < n){
+        while(left <= right && sum > k){
+            sum -= a[left];
+            left++;
+        }
         if(sum == k){
-            maxLen = max(maxLen , i+1);
+            maxLen = max(maxLen, right-left +1);
         }
-
-        int rem = sum - k;
-        if(prefixSumMap.find(rem) != prefixSumMap.end()){
-            int len = i - prefixSumMap[rem];
-            maxLen = max(len, maxLen);
-        }
-        if(prefixSumMap.find(sum) == prefixSumMap.end()){ // it will written for edge case where if sum of next ele equal to sum then it will not update
-            prefixSumMap[sum] = i;
+        right++ ;
+        if(right < n){
+        sum += a[right];
         }
     }
     return maxLen;
 }
 int main()
 {
-    vector<int>nums = {2,0,0,3}; //edge case example
-    int k = 3;
-    cout<<getLongestSubArray(nums , k);
-
+    vector<int>a = {1,2,3,1,1,1,1,3,3};
+    int k = 6;
+    cout<<longestSubarrayWithSumK(a , k);
    return 0;
 }
