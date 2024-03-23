@@ -99,7 +99,7 @@ int getLongestSubArray(vector<int>&nums, int k){
         }
     }
     return maxLen;
-}
+}  
 int main()
 {
     vector<int>nums = {2,0,0,3}; //edge case example
@@ -108,4 +108,4 @@ int main()
 
    return 0;
 }
-
+//dklmjsf
