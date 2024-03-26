@@ -107,7 +107,7 @@ class Solution{
                         k--;
 
                         while(j < k && nums[j] == nums[j-1]) j++;
-                        while(j < k && nums[k] == nums[k-1]) k--;
+                        while(j < k && nums[k] == nums[k+1]) k--;
 
                     }
                 }
@@ -128,5 +128,12 @@ int main()
         }
         cout<<"]";
     }
+    // for(int i = 0; i < ans.size(); i++){
+    //     cout<<"[";
+    //     for(int j = 0; j < ans[i].size(); j++){
+    //         cout << ans[i][j] << " ";
+    //     }
+    //     cout<<"]";
+    // }
    return 0;
 }
