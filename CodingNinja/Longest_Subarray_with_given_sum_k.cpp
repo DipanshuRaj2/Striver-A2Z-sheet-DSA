@@ -73,7 +73,7 @@ Sample Output 2 :
 
 
 
-optimal approach TLE = O(n logn) SpaceComplexity = O(n);
+// optimal approach TLE = O(n logn) SpaceComplexity = O(n);
 
 #include<bits/stdc++.h>
 using namespace std;
