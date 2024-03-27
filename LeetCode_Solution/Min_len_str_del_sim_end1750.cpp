@@ -40,11 +40,11 @@ class Solution{
         while(i < j && s[i]==s[j]){
             char cha = s[i];
         
-        while(i< j && cha == s[i]){
+         while(i< j && cha == s[i]){
             i++;
-        }
-        while(j>=i && cha == s[j]){
-            j--;
+         }
+         while(j>=i && cha == s[j]){
+          j--;
         }
       }
       return j - i +1;

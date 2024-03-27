@@ -37,15 +37,24 @@ using namespace std;
 int getLongestZeroSumSubarrayLength(vector<int> &arr){
     int n = arr.size();
     int maxLength = 0;
+    int start = -1;
+    int end = -1;
 	for(int i = 0; i<n; i++){
         int sum = 0;
         for(int j = i;j<n;j++){
             sum += arr[j];
-            if(sum == 0){
-                maxLength = max(maxLength, j-i+1);
+            if(sum == 0 && maxLength < j - i +1){
+                maxLength =  j-i+1;
+                start = i;
+                end = j;
             }
         }
+        
     }
+     for(int i = start; i<=end; i++){
+            cout<<arr[i]<<" ";
+        }
+    cout<<endl;
     return maxLength;
 }
 int main()
@@ -54,3 +63,4 @@ int main()
     cout<<getLongestZeroSumSubarrayLength(arr);
    return 0;
 }
+

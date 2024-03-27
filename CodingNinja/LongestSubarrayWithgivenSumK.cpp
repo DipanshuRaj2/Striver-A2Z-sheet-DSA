@@ -149,6 +149,7 @@ Sample Output 3 :
 //    return 0;
 // }
 
+//only for positive number ke liye
 
 //optimal approach
 #include<bits/stdc++.h>

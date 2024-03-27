@@ -74,7 +74,7 @@ Sample Output 2 :
 
 
 // optimal approach TLE = O(n logn) SpaceComplexity = O(n);
-
+// negative number is also available
 #include<bits/stdc++.h>
 using namespace std;
 int getLongestSubArray(vector<int>&nums, int k){
