@@ -81,4 +81,4 @@ int main()
     vector<int>ans = repeatinAndMissingNumber(a);
     cout<<ans[0]<<" "<<ans[1];
    return 0;
-} //gi
+} //
