@@ -34,6 +34,7 @@ void merge(vector<int> &arr, int low, int mid, int high)
         arr[i] = temp[i - low];
     }
 }
+
 void mergeSort(vector<int> &arr, int low, int high)
 {
     if (low >= high)
@@ -43,6 +44,7 @@ void mergeSort(vector<int> &arr, int low, int high)
     int mid = (low + high) / 2;
     mergeSort(arr, low, mid);
     mergeSort(arr, mid + 1, high);
+    countPairs(nums, low, mid, high);
     merge(arr, low, mid, high);
 }
 int main()
