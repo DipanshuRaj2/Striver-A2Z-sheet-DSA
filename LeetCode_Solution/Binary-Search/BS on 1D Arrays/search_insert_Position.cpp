@@ -25,3 +25,4 @@ int main()
     cout<<sol.searchInsert(arr, target);
    return 0;
 }
+///new commir
