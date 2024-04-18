@@ -14,29 +14,42 @@
 // }
 //optimised solution
 
-#include<iostream>
+// #include<bits/stdc++.h>
+// using namespace std;
+// int fibonacciSum(int n){
+
+//    if(n <=1){
+//     return n;
+//    }
+//     int fsum = fibonacciSum(n-2);
+//     int lsum = fibonacciSum(n-1);
+
+//     return fsum + lsum;
+// }
+// int main()
+// {
+//     int n;
+//     cin >> n;
+//     cout<<fibonacciSum(n);
+//    return 0;
+// }
+
 #include<bits/stdc++.h>
-#include <string.h>
 using namespace std;
-main(){
-string s="hello";
-int cnt=0;
-int i=0;
-int j=4;
-
-do
+int fibonacciSeries(int n ){
+    int fib1 = 0;
+    int fib2 = 1;
+    for(int i = 2; i<=n; i++){
+        int next = fib1+fib2;
+        fib1 = fib2;
+        fib2 = next;
+    }
+    return fib2;
+}
+int main()
 {
-    for (int i = 0; i <=4; i++)
-    {
-        cout<<s[i];
-    }
-    cout<<endl;
-    for (int i = 4; i>=0; i--)
-    {
-        cout<<s[i]<<i;
-    }
-    cout<<endl;
-    cnt++;
-
-} while (cnt<=100);
+    int n;
+    cin >> n;
+    cout<<fibonacciSeries(n);
+   return 0;
 }
