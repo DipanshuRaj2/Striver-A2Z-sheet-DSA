@@ -74,3 +74,26 @@
 //     cout<<ans;
 //    return 0;
 // }
+
+#include<bits/stdc++.h>
+using namespace std;
+void printWords(string name){
+    vector<string>storeWords;
+    stringstream is(name);
+    string word;
+    while(is >> word){
+        storeWords.push_back(word);
+    }
+    // for(int i = 0; i<storeWords.size(); i++){
+    //     cout<<storeWords[i]<<" ";
+    // }
+    for(auto ele: storeWords){
+        cout<<ele<<" "<<ele.length()<<endl;
+    }
+}
+int main()
+{
+    string name = "My name is Dipanshu Raj";
+    printWords(name);
+   return 0;
+}
