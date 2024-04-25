@@ -45,7 +45,7 @@ using namespace std;
 #include<bits/stdc++.h>
 int NthRoot(int n, int m) {
   // Write your code here.
-  int low = 1/n;
+  double low = 1/n;
   int ans = pow(m, low);
   return ans;
 }
