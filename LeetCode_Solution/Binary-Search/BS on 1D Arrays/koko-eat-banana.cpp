@@ -63,7 +63,7 @@ Output: 23*/
 
 // this code take O(n*n) time complexity
 
-// now i have to write a code which take complexity O(n logn).;
+// now i have to write a code which take complexity O(n logn)..;
 
 #include <bits/stdc++.h>
 using namespace std;
