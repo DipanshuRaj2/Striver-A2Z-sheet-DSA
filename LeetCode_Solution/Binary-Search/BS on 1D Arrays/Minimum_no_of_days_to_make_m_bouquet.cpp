@@ -111,7 +111,7 @@ Explanation: This is because on the 3rd day: all the roses with 'arr[i]' less th
 
 
 
-//this is the optimal approach using nlogn time complexity // we use binary search
+//this is the optimal approach using nlogn time complexity // we use binary search  d
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {
