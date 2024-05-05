@@ -89,39 +89,91 @@ Constraints:
 
 
 // Now i am trying within one function
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Solution{
+//     public:
+//     int shipWithinDays(vector<int>&weights, int days){
+//         int maxi = INT_MIN; int sum = 0;
+//         for(int i = 0; i<weights.size(); i++){
+//             maxi = max(maxi , weights[i]);
+//             sum += maxi;
+//         }
+//         for(int capacity = maxi; capacity<= sum; capacity++){
+//             int load = 0; int nodays = 1;
+//             for(int j = 0; j<weights.size();j++){
+//                 if(load + weights[j] > capacity){
+//                     days = days + 1;
+//                     load = weights[j];
+//                 }
+//                 else{
+//                     load += weights[j];
+//                 }
+//             }
+//             if(nodays <= days){
+//                 return capacity;
+//             }
+//         }
+//         return 0;
+//     }
+// };
+// int main()
+// {
+//      Solution sol;
+//     vector<int>nums = {1,2,3,1,1}; 
+//     int days = 4;
+//     cout<<sol.shipWithinDays(nums, days);
+//     return 0;
+// }
+
+// using binary serach it is very easy pass all the test case 
+
+
 #include<bits/stdc++.h>
 using namespace std;
 class Solution{
     public:
-    int shipWithinDays(vector<int>&weights, int days){
-        int maxi = INT_MIN; int sum = 0;
+    int fun(vector<int>&weights, int nodays){
+        int loads = 0; int days = 1;
         for(int i = 0; i<weights.size(); i++){
-            maxi = max(maxi , weights[i]);
-            sum += maxi;
-        }
-        for(int capacity = maxi; capacity<= sum; capacity++){
-            int load = 0; int nodays = 1;
-            for(int j = 0; j<weights.size();j++){
-                if(load + weights[j] > capacity){
-                    days = days + 1;
-                    load = weights[j];
-                }
-                else{
-                    load += weights[j];
-                }
+            if(loads + weights[i] > nodays){
+                days = days + 1;
+                loads = weights[i];
             }
-            if(nodays <= days){
-                return capacity;
+            else{
+                loads += weights[i];
             }
         }
-        return 0;
+        return days;
     }
+int shipWithinDays(vector<int>weights, int days){
+    int maxi = INT_MIN;
+    int sum = 0;
+    for(int i = 0; i<weights.size(); i++){
+        maxi = max(maxi, weights[i]);
+        sum += weights[i];
+    }
+    int low = maxi; int high = sum;
+    int ans = 0;
+    while(low <= high){
+        int mid = (low+high)/2;
+        int noDays = fun(weights, mid);
+        if(noDays <= days){
+            ans = mid;
+            high = mid - 1;
+        }
+        else{
+            low = mid + 1;
+        }
+    }
+    return ans;
+   }
 };
 int main()
 {
-     Solution sol;
+    Solution sol;
     vector<int>nums = {1,2,3,1,1}; 
     int days = 4;
     cout<<sol.shipWithinDays(nums, days);
-    return 0;
+   return 0;
 }
