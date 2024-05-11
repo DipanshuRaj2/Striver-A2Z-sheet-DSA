@@ -138,3 +138,4 @@ int main()
     cout << findPages(arr, n, m);
    return 0;
 }
+// this problem is similar to split array in to k, painter partition  (exact same code)
