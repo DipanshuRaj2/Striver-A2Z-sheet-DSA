@@ -104,38 +104,48 @@
 
 //using one Function
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int findPages(vector<int>arr, int n , int m){
+//     n = arr.size();
+//     int maxi = INT_MIN;
+//     int sum = 0;
+//     for(int i = 0; i<n; i++){
+//         maxi = max(maxi, arr[i]);
+//         sum += arr[i];
+//     }
+//     for(int i = maxi; i<=sum; i++){
+//         int cntStu = 1; int currentPages = 0;
+//         for(int j = 0; j<n; j++){
+//             if(currentPages + arr[j] <= i){
+//                 currentPages += arr[j];
+//             }
+//             else if(currentPages + arr[j] > i){
+//                 cntStu++;
+//                 currentPages = arr[i]; 
+//             }
+//         }
+//         if(cntStu == m){
+//             return i;
+//         }
+//     }
+// }
+// int main()
+// {
+//     vector<int> arr = {25, 46, 28, 49, 24};
+//     int m = 4;
+//     int n = arr.size();
+//     cout << findPages(arr, n, m);
+//    return 0;
+// }
+// this problem is similar to split array in to k, painter partition  (exact same code)
+
 #include<bits/stdc++.h>
 using namespace std;
-int findPages(vector<int>arr, int n , int m){
-    n = arr.size();
-    int maxi = INT_MIN;
-    int sum = 0;
-    for(int i = 0; i<n; i++){
-        maxi = max(maxi, arr[i]);
-        sum += arr[i];
-    }
-    for(int i = maxi; i<=sum; i++){
-        int cntStu = 1; int currentPages = 0;
-        for(int j = 0; j<n; j++){
-            if(currentPages + arr[j] <= i){
-                currentPages += arr[j];
-            }
-            else if(currentPages + arr[j] > i){
-                cntStu++;
-                currentPages = arr[i]; 
-            }
-        }
-        if(cntStu == m){
-            return i;
-        }
-    }
-}
 int main()
 {
-    vector<int> arr = {25, 46, 28, 49, 24};
-    int m = 4;
-    int n = arr.size();
-    cout << findPages(arr, n, m);
+    int a = 3;
+    int b = 4;
+    cout<< (a ^ b);
    return 0;
 }
-// this problem is similar to split array in to k, painter partition  (exact same code)
