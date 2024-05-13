@@ -142,10 +142,23 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+void selectionSort(vector<int>arr){
+    
+    int n = arr.size();
+    for(int i = 0; i<n-1; i++){
+        for(int j = i+1; j<n; j++){
+            if(arr[j] <= arr[j+1]){
+                swap(arr[j], arr[i]);
+            }
+        }
+    }
+}
 int main()
 {
-    int a = 3;
-    int b = 4;
-    cout<< (a ^ b);
+    vector<int>arr={29, 10, 14, 37, 13};
+    selectionSort(arr);
+    for(int i = 0; i<arr.size(); i++){
+        cout<<arr[i]<<" ";
+    }
    return 0;
 }
