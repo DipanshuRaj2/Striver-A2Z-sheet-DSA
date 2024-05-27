@@ -41,31 +41,30 @@ Explanation: Both 3 and 4 are peak elements so [1,0] and [0,1] are both acceptab
 //     }
 //    return 0;
 // }
-// In this case TIme complexity Is O(n*m) so we reduce the time complexity;
+// In this
 
+//  case TIme complexity Is O(n*m) so we reduce the time complexity;
 #include<bits/stdc++.h>
 using namespace std;
-vector<int>findPeakGrid(vector<vector<int>> & mat){
-    int n = mat.size();
-    int m = mat[0].size();
 
-    int low = 0; int high = n * m -1;
+    vector<int> findPeakGrid(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int m = mat[0].size();
 
-    int rowIndex = -1; int colIndex = -1;
-
-    int maxi = INT_MIN;
-    for(int i = low; i <= high; i++){
-        int row = i/m; int col = i % m;
-
-        if(mat[row][col] > maxi){
-             maxi = mat[row][col];
-            rowIndex = row;
-            colIndex = col;
+        int maxi = INT_MIN;
+        int rowIndex = -1; int colIndex = -1;  
+        for(int i = 0; i<n; i++){
+            for(int j = 0; j<m; j++){
+                if(mat[i][j] > maxi){
+                    maxi = mat[i][j];
+                    rowIndex = i;
+                    colIndex = j;
+                }
+            }
         }
-        
+        return{rowIndex, colIndex}; 
     }
-    return{rowIndex, colIndex};
-}
+
 int main()
 {
 vector<vector<int>> mat = {
@@ -80,3 +79,44 @@ vector<vector<int>> mat = {
     }
    return 0;
 }
+
+
+
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int>findPeakGrid(vector<vector<int>> & mat){
+//     int n = mat.size();
+//     int m = mat[0].size();
+
+//     int low = 0; int high = n * m -1;
+
+//     int rowIndex = -1; int colIndex = -1;
+
+//     int maxi = INT_MIN;
+//     for(int i = low; i <= high; i++){
+//         int row = i/m; int col = i % m;
+
+//         if(mat[row][col] > maxi){
+//              maxi = mat[row][col];
+//             rowIndex = row;
+//             colIndex = col;
+//         }
+        
+//     }
+//     return{rowIndex, colIndex};
+// }
+// int main()
+// {
+// vector<vector<int>> mat = {
+//         {1, 4, 3},
+//         {6, 7, 8},
+//         {2, 5, 9}
+//     };
+//     vector<int>ans = findPeakGrid(mat);
+//     int n = ans.size();
+//     for(int i = 0; i<n; i++){
+//         cout<<ans[i]<<" ";
+//     }
+//    return 0;
+// }
