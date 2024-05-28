@@ -30,35 +30,58 @@ Output: ""
 Explanation: 
 The input string is "()()", with primitive decomposition "()" + "()".
 After removing outer parentheses of each part, this is "" + "" = "".*/
+// #include<bits/stdc++.h>
+// using namespace std;
+// class Solution{
+//     public:
+//     string removeOuterParentheses(string s) {
+//         stack<char>st;
+//         string ans = "";
+//         for(int i = 0; i<s.length()-1; i++){
+//             if(st.empty()){
+//                 st.push(s[i]);
+//             }
+//             else if(s[i] == '('){
+//                 st.push(s[i]);
+//                 ans.push_back(s[i]);
+//             }
+//             else if(st.top() == '(' && s[i] == ')'){
+//                 st.pop();
+//                 if(!st.empty()) ans.push_back(s[i]);
+                
+//             }
+//         }
+
+//         return ans;
+//     }
+// };
+// int main()
+// {
+//     Solution sol;
+//     string s = "(()())(())";
+//     cout<< sol.removeOuterParentheses(s);
+//    return 0;
+// }
+
+// it takes time complexity O(n)
+
 #include<bits/stdc++.h>
 using namespace std;
 class Solution{
     public:
-    string removeOuterParentheses(string s) {
-        stack<char>st;
-        string ans = "";
-        for(int i = 0; i<s.length()-1; i++){
-            if(st.empty()){
-                st.push(s[i]);
-            }
-            else if(s[i] == '('){
-                st.push(s[i]);
-                ans.push_back(s[i]);
-            }
-            else if(st.top() == '(' && s[i] == ')'){
-                st.pop();
-                if(!st.empty()) ans.push_back(s[i]);
-                
-            }
-        }
-
-        return ans;
+    string removeOuterParentheses(string s){
+    string ans = "";
+    int count = 0;
+    for(int i = 0; i<n; i++){
+        if(s[i] == ')') count --;
+        if(count != 0) ans.push_back(s[i]);
+        if(s[i] == '(') count++;
     }
+    return ans;
+  }
 };
+
 int main()
 {
-    Solution sol;
-    string s = "(()())(())";
-    cout<< sol.removeOuterParentheses(s);
    return 0;
 }
