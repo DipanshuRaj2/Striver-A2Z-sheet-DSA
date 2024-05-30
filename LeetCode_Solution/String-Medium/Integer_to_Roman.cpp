@@ -82,10 +82,13 @@ class Solution{
             }
             num = num % val[i];
         }
+        return result;
      }
 
-}
+};
 int main()
 {
+    Solution sol;
+    cout<<sol.intToRoman(1094);
    return 0;
 }
