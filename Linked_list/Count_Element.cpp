@@ -1,10 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node {
+struct Node{
     int data;
     Node* next;
 
-    public:
     Node(int data1, Node* next1){
         data = data1;
         next = next1;
@@ -14,32 +13,32 @@ struct Node {
         next = nullptr;
     }
 };
-Node* convertArr2LL(vector<int> &arr){
+Node* convert2LL(vector<int>arr){
     Node* head = new Node(arr[0]);
     Node* mover = head;
-    cout<<"Address of header "<<head<<endl;
-    for(int i = 1; i<arr.size();i++){
+
+    for(int i = 1;i<arr.size();i++){
         Node* temp = new Node(arr[i]);
-        mover->next = temp;
-        mover = temp;
+        mover -> next = temp;
+        mover = mover -> next;
     }
     return head;
 }
-int countOfLinkedList(Node* head){
-    int cnt = 0;
+int countLinklist(Node* head){
+    int count = 0;
     Node* temp = head;
-
-    while(temp){
+    while(temp!= nullptr){
         temp = temp->next;
-        cnt++;
+        count++;
     }
-    return cnt;
+    return count;
 }
 
 int main()
 {
-    vector<int>arr = {2,5,8,7};
-    Node* head = convertArr2LL(arr);
-    cout << countOfLinkedList(head);
+    vector<int>arr = {2, 3, 4, 5};
+
+    Node* head = convert2LL(arr);
+    cout<<countLinklist(head);
    return 0;
 }
