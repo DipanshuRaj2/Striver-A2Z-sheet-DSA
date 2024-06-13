@@ -39,12 +39,12 @@ Node *removehead(Node *head)
     }
     Node *temp = head;
     head = head->next;
-    delete head;
+    delete temp;
     return head;
 }
 int main()
 {
-    vector<int> arr = {2, 3, 4, 5, 6};
+    vector<int> arr = {3};
     Node *head = convert2LL(arr);
 
     head = removehead(head);
