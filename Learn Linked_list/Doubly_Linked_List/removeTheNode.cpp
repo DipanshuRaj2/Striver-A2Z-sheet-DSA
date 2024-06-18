@@ -39,8 +39,8 @@ void deleteNode(Node* temp){
     Node* forwad = temp -> next;
 
     if(forwad == NULL){
-        forwad -> back = nullptr;
         prev -> next = nullptr;
+        temp -> back = nullptr;
         delete temp;
         return;
     }
@@ -57,6 +57,6 @@ int main(){
     Node* head = convert2DLL(arr);
     print(head);
 
-    deleteNode(head->next->next);
+    deleteNode(head->next->next->next);
     print(head);
 }
