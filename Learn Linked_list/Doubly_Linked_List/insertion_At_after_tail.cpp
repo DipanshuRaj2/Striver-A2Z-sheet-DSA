@@ -31,12 +31,15 @@ Node* convert2DLL(vector<int>arr){
     }
     return head;
 }
-Node* insertAfterHead(Node* head, int val){
-    Node* newNode = new Node(val, head->next, head);
+Node* insertAfterTail(Node* head, int val){
+    Node* temp  = head;
+
+    while(temp->next != nullptr){
+        temp = temp -> next;
+    }
+    Node* newNode = new Node(val, nullptr, temp);
+    temp->next = newNode;
     
-    // newNode -> prev = head;
-    // newNode -> next = head->next->next;
-    head->next=newNode;
     return head;
 }
 void print(Node* head){
@@ -50,7 +53,7 @@ int main(){
     vector<int>arr = {1, 3, 4, 5};
     Node* head = convert2DLL(arr);
     print(head);
-    head = insertAfterHead(head, 100);
+    head = insertAfterTail(head, 100);
     print(head);
     return 0;
 }

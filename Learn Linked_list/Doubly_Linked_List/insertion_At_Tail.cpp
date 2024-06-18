@@ -31,20 +31,20 @@ Node* convert2DLL(vector<int>arr){
     }
     return head;
 }
-Node* insertAtTail(Node* head, int val){
-
+Node* insertBeforeTail(Node* head, int val){
     Node* temp = head;
-    while(temp->next != NULL){
-        temp = temp->next;
+    while(temp->next != nullptr){
+        temp = temp -> next;
     }
-  Node* newNode = new Node(val);
-  newNode = temp -> prev;
-  newNode = te
+    Node* prev = temp->prev;
+    Node* newNode = new Node(val, temp, prev);
+    prev ->next = newNode;
+    temp -> prev = newNode;
     return head;
 }
 void print(Node* head){
     while(head != NULL){
-        cout<<head ->data <<"-> ";
+        cout<<head ->data <<"<-> ";
         head = head -> next;
     }
     cout<<endl;
@@ -53,7 +53,7 @@ int main(){
     vector<int>arr = {1, 3, 4, 5};
     Node* head = convert2DLL(arr);
     print(head);
-    head = insertAtTail(head, 100);
+    head = insertBeforeTail(head, 100);
     print(head);
     return 0;
 }
