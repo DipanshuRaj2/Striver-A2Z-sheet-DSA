@@ -31,6 +31,13 @@ Node* convert2DLL(vector<int>arr){
     }
     return head;
 }
+
+Node* insertAfterHead(Node* head, int val){
+    Node* newNode = new Node(val, head->next, head);
+    
+    head->next=newNode;
+    return head;
+}
 Node* insertAfterTail(Node* head, int val){
     if(head == nullptr){
         return new Node(val);
@@ -45,9 +52,33 @@ Node* insertAfterTail(Node* head, int val){
     
     return head;
 }
+Node* insert_After_K_Position(Node* head, int k, int val){
+    if(k == 1){
+        return  insertAfterHead(head, val);
+    }
+    Node* temp = head;
+    int cnt = 0;
+    while(temp != NULL){
+        cnt++;
+        if(cnt == k) break;
+        temp = temp -> next;
+    }
+    Node* front= temp -> next;
+
+    Node* newNode = new Node(val, front, temp);
+
+    if(front == nullptr){
+        return insertAfterTail(head, val);
+    }
+    temp-> next = newNode;
+    front -> prev = newNode;
+
+    return head;
+
+}
 void print(Node* head){
     while(head != NULL){
-        cout<<head ->data <<"<-> ";
+        cout<<head ->data <<" <-> ";
         head = head -> next;
     }
     cout<<endl;
@@ -56,7 +87,7 @@ int main(){
     vector<int>arr = {1, 3, 4, 5};
     Node* head = convert2DLL(arr);
     print(head);
-    head = insertAfterTail(head, 100);
+    head = insert_After_K_Position(head, 4, 100);
     print(head);
     return 0;
 }
