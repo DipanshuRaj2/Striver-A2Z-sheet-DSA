@@ -15,6 +15,7 @@ int main()
 {
     vector<int>arr={5,3,2,4,1};
     int n = arr.size();
+    
     cout<<numberOfInversions(arr, n);
    return 0;
 }

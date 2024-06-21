@@ -38,7 +38,7 @@ void print(Node* head){
     }
     cout<<endl;
 }
-void insertBeforeNode(Node* node, int val){
+void insertAfterNode(Node* node, int val){
     Node* forwad = node -> next;
     Node* newNode = new Node(val, forwad, node);
     node -> next = newNode;
@@ -48,7 +48,7 @@ int main(){
     vector<int>arr = {1, 3, 4, 5};
     Node* head = convert2DLL(arr);
     print(head);
-    insertBeforeNode(head->next, 100);
+    insertAfterNode(head->next, 100);
     print(head);
     return 0;
 }
