@@ -12,7 +12,8 @@ struct Node{
         next = nullptr;
     }
 };
-Node* Detect_Loop(Node* head){
+//brute force approach
+Node* Detect_LoopBrute(Node* head){
     Node* temp = head;
     unordered_map<Node*, int>ump;
     while(temp != nullptr){
@@ -24,6 +25,27 @@ Node* Detect_Loop(Node* head){
     }
     return nullptr;
 }
+
+//hare and tortoise approach
+Node* Detect_LoopBest(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != nullptr && fast -> next == nullptr){
+        fast = fast -> next-> next;
+        slow = slow -> next;
+        if(fast == slow){
+            slow = head;
+            while(slow != fast){
+                slow = slow -> next;
+                fast = fast -> next;
+            }
+            return fast;
+        }
+    }
+    return nullptr;
+}
+
 int main()
 {
     Node* first = new Node(1);
@@ -38,6 +60,7 @@ int main()
     fourth -> next = fifth;
     fifth -> next = third;
 
-    cout<< Detect_Loop(first);
+    cout<< Detect_LoopBrute(first)<<endl;
+    cout<< Detect_LoopBest(first);
    return 0;
 }
