@@ -11,28 +11,43 @@ struct Node {
     }
 };
 
-int countNodesinLoop(Node *head) {
-    Node* slow = head;
-    Node* fast = head;
-    int count = 0;
-    while (fast != nullptr && fast->next != nullptr) {
-        slow = slow->next;
-        fast = fast->next->next;
+// int countNodesinLoop(Node *head) {
+//     Node* slow = head;
+//     Node* fast = head;
+//     int count = 0;
+//     while (fast != nullptr && fast->next != nullptr) {
+//         slow = slow->next;
+//         fast = fast->next->next;
         
-        if (slow == fast) {  // Loop detected
-        count = 1;
-            Node* temp = slow;
+//         if (slow == fast) {  // Loop detected
+//         count = 1;
+//             Node* temp = slow;
             
-            while (temp->next != slow) {
-                temp = temp->next;
-                count++;
-            }
-            return count;  // Return the count of nodes in the loop
+//             while (temp->next != slow) {
+//                 temp = temp->next;
+//                 count++;
+//             }
+//             return count;  // Return the count of nodes in the loop
+//         }
+//     }
+//     return 0;  // No loop found
+// }
+int countNodesinLoop(Node* head){
+    Node* temp = head;
+    unordered_map<Node*, int>mpp;
+    int value = 0;
+    int timer;
+    while(temp != nullptr){
+        if(mpp.find(temp) != mpp.end()){
+            value = mpp[temp];
+            return timer - value;
         }
+        mpp[temp] = timer;
+        timer++;
+        temp = temp -> next;
     }
-    return 0;  // No loop found
+    return 0;
 }
-
 int main() {
     Node* first = new Node(1);
     Node* second = new Node(2);
