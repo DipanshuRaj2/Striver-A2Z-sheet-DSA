@@ -1,4 +1,4 @@
-      else{
-         int a = min_st.top();
-         min_st.push(a);
-      }
+    // for(int i = 0; i<N; i++)
+    // {
+    //     cout<<arr[i]<<" ";
+    // }
