@@ -86,7 +86,7 @@ struct Node{
     }
 };
 Node* reverseLL(Node* head){
-    Node* temp = head; 
+   Node* temp = head; 
     Node* prev = nullptr;
     while(temp != nullptr){
         Node* front = temp->next;
@@ -96,6 +96,7 @@ Node* reverseLL(Node* head){
     }
     return prev;
 }
+
 void print(Node* head){
     Node* temp = head;
     while(temp != NULL){

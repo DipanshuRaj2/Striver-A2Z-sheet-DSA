@@ -1,12 +1,3 @@
-Node* Detect_Loop(Node* head){
-    Node* temp = head;
-    unordered_map<Node*, int>ump;
-    while(temp != nullptr){
-        if(ump.find(temp) != ump.end()){
-            return temp;
-        }
-        ump[temp]++;
-        temp = temp -> next;
-    }
-    return nullptr;
-}
+    // head -> next -> next = new Node(4);
+    // head -> next -> next -> next = new Node(12);
+    // head -> next -> next -> next -> next = new Node(1);
