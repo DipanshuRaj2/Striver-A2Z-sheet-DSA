@@ -10,33 +10,24 @@ struct Node{
         
     }
 };
-Node* removeNthNode(Node* head, int n){
+Node* sortLL(Node* head){
     if(head == nullptr || head -> next == nullptr){
-        return nullptr;
+        return head;
     }
     Node* temp = head;
-    int cnt = 0;
+    vector<int>arr;
     while(temp != nullptr){
-        cnt++;
+        arr.push_back(temp->data);
         temp = temp -> next;
     }
-    if(cnt == n){
-       Node* newNode = head->next;
-       delete(head);
-       return newNode ;
-    }
-    int res = cnt - n; 
+    sort(arr.begin(), arr.end());
+    int i = 0;
     temp = head;
     while(temp != nullptr){
-        res--;
-        if(res == 0){
-            break;
-        }
+        temp -> data = arr[i];
+        i++;
         temp = temp -> next;
     }
-    Node* delNode = temp -> next;
-    temp -> next = temp -> next -> next;
-    delete(delNode);
     return head;
 }
 void print(Node* head){
@@ -57,7 +48,7 @@ int main()
     head -> next -> next -> next -> next -> next -> next = new Node(4);
     // 1 -> 3 -> 4 -> 2 -> 7 -> 5 -> 4
     print(head);
-    head = removeNthNode(head, 4);
+    head = sortLL(head);
     print(head);
    return 0;
  
