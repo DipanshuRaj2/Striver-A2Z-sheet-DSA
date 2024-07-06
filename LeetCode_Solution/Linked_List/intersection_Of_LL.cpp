@@ -23,6 +23,8 @@ void insertNode(Node*& head, int data){
     temp ->next = newNode;
     
 }
+/**
+ 1st approach
 Node* intersectionPresent(Node* head1, Node* head2){
     unordered_map<Node*, int>ump;
     Node* temp = head1;
@@ -37,7 +39,64 @@ Node* intersectionPresent(Node* head1, Node* head2){
         head2 = head2 -> next;
     }
     return nullptr;
+} 
+*/
+// it taking extra space which we use unordered set
+
+//2nd approach
+/*
+Node* collisionPoint(Node* t1, Node* t2, int d){
+
+    //head 2 is bigger so we reach at the same node of both liked list
+    while(d != 0){
+        d--;
+         t2 = t2 -> next;
+    }
+    while(t1 != t2){
+        t1 = t1 -> next;
+        t2 = t2 -> next;
+    }
+    return t1;
 }
+Node* intersectionPresent(Node* head1, Node* head2){
+    Node* t1 = head1;
+    int n1 = 0;
+    
+    while(t1 != nullptr){
+        n1++;
+        t1 = t1 -> next;
+    }
+
+    Node* t2 = head2;
+    int n2 = 0;
+
+    while(t2 != nullptr){
+        n2++;
+        t2 = t2 -> next;
+    }
+    if(n1 < n2){
+        return collisionPoint(head1, head2, n2 - n1);
+    }
+    else{
+        return collisionPoint(head2, head1, n1 - n2);
+    }
+}
+*/
+//3rd approach
+Node* intersectionPresent(Node* head1, Node* head2){
+    Node* temp1 = head1;
+    Node* temp2 = head2;
+
+    while(temp1 != temp2){
+        if(temp1 == temp2) return temp1;
+        temp1 = temp1 -> next;
+        temp2 = temp2 -> next;
+        if(temp1 == nullptr) temp1 = head2;
+        if(temp2 == nullptr) temp2 = head1;
+    }
+    return temp1;
+}
+
 void print(Node* head){
     Node* temp = head;
     while(temp != nullptr){
