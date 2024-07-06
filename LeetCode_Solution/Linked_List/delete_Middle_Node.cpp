@@ -6,6 +6,7 @@ struct Node{
     Node(int d){
         data = d;
         next = nullptr;
+        int a=9;
     }
 };
 // it take more time compexity
@@ -29,7 +30,7 @@ Node* deleteMiddle(Node* head) {
         temp -> next = temp -> next -> next;
         delete(deleteNode);
         return head;
-}
+        }
 
 
 //using tortoise and hare approach
