@@ -26,30 +26,49 @@ Node *convert2LL(vector<int> &arr)
     }
     return head;
 }
-Node *removeDuplicates(Node *head)
+// Node *removeDuplicates(Node *head)
+// {
+//     // Your code here
+//     set<int> st;
+//     Node *temp = head;
+//     while (temp != nullptr)
+//     {
+//         st.insert(temp->data);
+//         temp = temp->next;
+//     }
+
+//     Node *dummy = new Node(-1);
+//     Node *current = dummy;
+//     int i = 0;
+//     for (auto ele : st)
+//     {
+//         Node *newNode = new Node(ele);
+//         current->next = newNode;
+//         current = newNode;
+//     }
+//     return dummy->next;
+// }
+
+Node *removeDuplicates(struct Node *head)
 {
-    // Your code here
-    set<int> st;
     Node *temp = head;
-    while (temp != nullptr)
+    while (temp != nullptr && temp->next != nullptr)
     {
-        st.insert(temp->data);
+        Node *newNode = temp->next;
+        while (newNode != nullptr && temp->data == newNode->data)
+        {
+            Node *duplicate = newNode;
+            newNode = newNode->next;
+            delete (duplicate);
+        }
+        temp->next = newNode;
+        if (newNode != nullptr)
+            newNode->prev = temp;
+
         temp = temp->next;
     }
-
-    Node *dummy = new Node(-1);
-    Node *current = dummy;
-    int i = 0;
-    for (auto ele : st)
-    {
-        Node *newNode = new Node(ele);
-        current->next = newNode;
-        current = newNode;
-    }
-    return dummy->next;
+    return head;
 }
-
-
 void print(Node *head)
 {
     while (head != nullptr)
@@ -69,4 +88,3 @@ int main()
     print(head);
     return 0;
 }
-
