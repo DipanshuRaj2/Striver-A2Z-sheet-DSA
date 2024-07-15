@@ -1,108 +1,42 @@
-// #include<bits/stdc++.h>
-// using namespace std;
-// int main()
-// {
-//     for(int i = 0; i<100; i++){
-//         if(i % 2 == 0){
-//             cout<<"Hello world \n";
-//         }
-//         else{
-//             cout<<"dlrow olleH \n";
-//         }
-//     }
-//    return 0;
-// }
-//optimised solution
-
-// #include<bits/stdc++.h>
-// using namespace std;
-// int fibonacciSum(int n){
-
-//    if(n <=1){
-//     return n;
-//    }
-//     int fsum = fibonacciSum(n-2);
-//     int lsum = fibonacciSum(n-1);
-//     return fsum + lsum;
-// }
-// int main()
-// {
-//     int n;
-//     cin >> n;
-//     cout<<fibonacciSum(n);
-//    return 0;
-// }
-
-// #include<bits/stdc++.h>
-// using namespace std;
-// int fibonacciSeries(int n ){
-//     int fib1 = 0;
-//     int fib2 = 1;
-//     for(int i = 2; i<=n; i++){
-//         int next = fib1+fib2;
-//         fib1 = fib2;
-//         fib2 = next;
-//         cout<<fib2 <<" ";
-//     }
-//     return fib2;
-// }
-// int main()
-// {
-//     int n;
-//     cin >> n;
-//     cout<<fibonacciSeries(n);
-//    return 0;
-// }
-
-//print the spiral matrix
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-vector<int>storeSpiral(vector<vector<int>>mat){
-    vector<int>ans;
-    int n = mat.size(); // row
-    int m = mat[0].size();// col
-    
-
-    int left = 0; int right = m-1;
-    int top = 0; int bottom = n-1;
-
-    while(left<=right && top <= bottom){
-        for(int i = left; i<= right;i++){
-            ans.push_back(mat[top][i]);
-           
-        }
-         top++;
-        for(int i = top; i<=bottom; i++){
-            ans.push_back(mat[i][right]);\
-          
-        }
-          right--;
-        if(top <= bottom){
-            for(int i = right; i >= left; i--){
-                ans.push_back(mat[bottom][i]);
+vector<long long>lcmAndGcd(long long &a, long long &b){
+    vector<long long>factA;
+    vector<long long>factB;
+    long long i = 1;
+    while(i <= a || i<= b){
+       if(a % i == 0) factA.push_back(i);
+       if(b % i == 0)factB.push_back(i);
+        i++;
+    }
+    vector<long long>Gcd;
+    for(int i = 0;i<factA.size(); i++){
+        for(int j = 0; j<factB.size(); j++){
+            if(factA[i] == factB[j]){
+                Gcd.push_back(factA[i]);
+                break;
             }
-            bottom--;
-        }
-        if(left <= right){
-            for(int i = bottom; i >= top;i--){
-                ans.push_back(mat[i][left]); 
-            }
-            left++;
         }
     }
-    return ans;
+    int GcdANS = 1;
+    for(int i = 0; i<Gcd.size(); i++){
+        GcdANS = GcdANS * Gcd[i];
+    }
+    vector<long long>ans;
+    int LCM = (a * b)/GcdANS;
 
+    ans.push_back(LCM);
+    ans.push_back(GcdANS);
+    return ans;
 }
 int main()
 {
-    vector<vector<int>>mat = {{1, 2, 3, 4},
-                             {5, 6, 7, 8},
-	                         {9, 10, 11, 12},
-		                     {13, 14, 15, 16}};
-    vector<int>ans = storeSpiral(mat);
+    long long a = 14;
+    long long b = 8;
+    vector<long long>ans = lcmAndGcd(a, b);
     for(int i = 0; i<ans.size(); i++){
-        cout<<ans[i]<<" ";
+        cout<<ans[i] <<" ";
     }
-   return 0;
+    // cout<<"Lcm: "<<ans[0]<<"Gcd: "<<ans[1]<<" ";
+    return 0;
 }
