@@ -16,12 +16,9 @@ Return an integer denoting the number of operations it takes to make nums empty.
 
 Example 1
 
-
-
 Input: 
 
 3
-
 3 4 -1
 
 
