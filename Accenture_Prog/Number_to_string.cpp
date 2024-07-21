@@ -35,12 +35,36 @@ Input 3 :
 Output 3 :
 AZ*/
 
-#include <bits/stdc++.h>
-using namespace std;
-int main()
-{
-    int n = 956 % 26;
-    cout<<n;
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main(){
+//     int n;
+//     cin >> n;
+//     string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     string ans = "";
+//     while(n != 0){
+//         n--;
+//         int remainder = n % 26;
+//         ans = ans + (str[remainder]);
+//         n /= 26;
+//     }
+//     reverse(ans.begin(), ans.end());
+//     cout<<ans;
+// }
 
-    return 0;
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin >> n;
+
+    string ans = "";
+    while(n != 0){
+        n--;
+        int remainder = n % 26;
+        ans += (remainder + 'A');
+        n /= 26;
+    }
+    reverse(ans.begin(), ans.end());
+    cout<<ans;
 }
