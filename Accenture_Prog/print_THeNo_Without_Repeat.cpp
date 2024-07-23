@@ -2,21 +2,18 @@
 #include<string>
 using namespace std;
 bool check(int &num1){
-      int num = num1;
-      string ans = "";
-    while(num != 0){
-      int ele = num % 10;
-      ans = ans + to_string(ele);
-      num = num /10;
-    }
-    int ans1 = stoi(ans);
-    if(ans1 == num1){
-        return false;
+    string num = to_string(num1);
+    set<char>st;
+    for(char ch: num){
+        if(st.find(ch) != st.end()){
+            return false;
+        }
+        st.insert(ch);
     }
     return true;
 }
 void printNum(int n, int m){
-    for(int i = 0; i<n; i++){
+    for(int i = n; i<=m; i++){
         if(check(i)){
             cout<<i<<" ";
         }
