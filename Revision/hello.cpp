@@ -1,42 +1,55 @@
+// #include <bits/stdc++.h>
+// using namespace std;
+// int removeDuplicates(vector<int> &nums)
+// {
+//     int n = nums.size();
+//     vector<int> ans;
+//     set<int> st;
+//     for(int i = 0; i<nums.size(); i++){
+//         st.insert(nums[i]);
+//     }
+//     int i = 0;
+//     for(int ele : st){
+//         nums[i] = ele;
+//         i++;
+//     }
+//     return st.size();
+// }
+// int main()
+// {
+//     vector<int>nums = {0,0,1,1,1,2,2,3,3,4};
+//     cout<<removeDuplicates(nums);
+//     return 0;
+// }
+
 #include <bits/stdc++.h>
 using namespace std;
-vector<long long>lcmAndGcd(long long &a, long long &b){
-    vector<long long>factA;
-    vector<long long>factB;
-    long long i = 1;
-    while(i <= a || i<= b){
-       if(a % i == 0) factA.push_back(i);
-       if(b % i == 0)factB.push_back(i);
-        i++;
-    }
-    vector<long long>Gcd;
-    for(int i = 0;i<factA.size(); i++){
-        for(int j = 0; j<factB.size(); j++){
-            if(factA[i] == factB[j]){
-                Gcd.push_back(factA[i]);
-                break;
-            }
+void moveZeroes(vector<int> &nums)
+{
+    int count = 0;
+    vector<int>ans;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] == 0)
+        {
+            count++;
+        }
+        if(nums[i] != 0){
+            ans.push_back(nums[i]);
         }
     }
-    int GcdANS = 1;
-    for(int i = 0; i<Gcd.size(); i++){
-        GcdANS = GcdANS * Gcd[i];
+    for(int i = 1; i<=count; i++){
+        ans.push_back(0);
     }
-    vector<long long>ans;
-    int LCM = (a * b)/GcdANS;
-
-    ans.push_back(LCM);
-    ans.push_back(GcdANS);
-    return ans;
+    for(int i = 0; i<ans.size(); i++){
+        cout<<ans[i]<<" ";
+    }
+    cout<<endl;
+    cout<<"countZeroes: " <<count;
 }
 int main()
 {
-    long long a = 14;
-    long long b = 8;
-    vector<long long>ans = lcmAndGcd(a, b);
-    for(int i = 0; i<ans.size(); i++){
-        cout<<ans[i] <<" ";
-    }
-    // cout<<"Lcm: "<<ans[0]<<"Gcd: "<<ans[1]<<" ";
+    vector<int>arr = {0,1,0,3,12};
+    moveZeroes(arr);
     return 0;
 }
