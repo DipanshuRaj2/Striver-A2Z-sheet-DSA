@@ -11,34 +11,55 @@ public:
         next = nullptr;
     }
 };
-class Solution
-{
-public:
-    Node *rotateRight(Node *head, int k)
-    {
-        // k = k % n;
-        vector<int> arr;
-        Node *temp = head;
-        while (temp != nullptr)
-        {
-            arr.push_back(temp->data);
-            temp = temp->next;
-        }
-        k = k % arr.size();
-        reverse(arr.begin(), arr.end());
-        reverse(arr.begin(), arr.begin() + k);
-        reverse(arr.begin() + k, arr.end());
-        Node *head1 = new Node(arr[0]);
-        temp = head1;
-        for (int i = 1; i < arr.size(); i++)
-        {
-            Node *newNode = new Node(arr[i]);
-            temp->next = newNode;
-            temp = newNode;
-        }
-        return head1;
+// class Solution
+// {
+// public:
+//     Node *rotateRight(Node *head, int k)
+//     {
+//         // k = k % n;
+//         vector<int> arr;
+//         Node *temp = head;
+//         while (temp != nullptr)
+//         {
+//             arr.push_back(temp->data);
+//             temp = temp->next;
+//         }
+//         k = k % arr.size();
+//         reverse(arr.begin(), arr.end());
+//         reverse(arr.begin(), arr.begin() + k);
+//         reverse(arr.begin() + k, arr.end());
+//         Node *head1 = new Node(arr[0]);
+//         temp = head1;
+//         for (int i = 1; i < arr.size(); i++)
+//         {
+//             Node *newNode = new Node(arr[i]);
+//             temp->next = newNode;
+//             temp = newNode;
+//         }
+//         return head1;
+//     }
+// };
+Node* rotateRight(Node* head, int k){
+    Node* temp = head;
+    int len = 1;
+    while(temp -> next != nullptr){
+        temp = temp -> next;
+        len++;
     }
-};
+    k = k % len;
+    if(k % len == 0){
+        return head;
+    }
+    temp -> next = head;
+    int rem = len - k;
+    while(rem != 0){
+        temp = temp -> next;
+        rem--;
+    }
+    head = temp -> next;
+    temp -> next = nullptr;
+    return head;
+}
 Node *convert2LL(vector<int> &arr) {
     if (arr.empty()) return nullptr;
 
@@ -66,10 +87,10 @@ void print(Node *head)
 }
 int main()
 {
-    Solution sol;
+    // Solution sol;
     vector<int> arr = {1, 2, 3, 4, 5};
     Node *head = convert2LL(arr);
     print(head);
-    head = sol.rotateRight(head, 2);
+    head = rotateRight(head, 2);
     print(head);
 }
