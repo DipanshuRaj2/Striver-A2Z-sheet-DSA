@@ -25,18 +25,52 @@ int main()
 
 
 
+//another solution 
+#include <bits/stdc++.h>
+using namespace std;
+string removeExtraSpace(string &str){
+    int i = 0; 
+    int index = 0;
+    int n = str.length();
+    while(i < n && str[i] == ' '){
+         i++;
+    }
+    while(i < n){
+        while(i<n && str[i] != ' '){
+            str[index++] = str[i++];
+        }
+        while(i<n && str[i] == ' '){
+            i++;
+        }
+        if(i<n)
+            str[index++] = ' ';
+    }
+    str.resize(index);
+    // cout<<str.length()<<endl;
+    return str;
+}
 
-
-
-// #include<bits/stdc++.h>
-// using namespace std;
-// int main()
-// {
-//     string s = "the sky is blue";
-//     vector<string> ans = "";
-//     int n = s.length();
-//     for(int i = 0; i<)
-//     cout<<n;
-//     cout<<ans;
-//    return 0;
-// }
+string reverseString(string s)
+{
+    s = removeExtraSpace(s);
+    reverse(s.begin(), s.end());
+    int j = 0;
+    for (int i = 0; i <= s.length(); i++)
+    {
+        if (i == s.length() || s[i] == ' ')
+        {
+            reverse(s.begin() + j, s.begin() + i);
+            j = i + 1;
+        }
+    }
+    return s;
+}
+int main()
+{
+    string s = "   Hello    world";
+    cout<<removeExtraSpace(s)<<"\n";
+    cout<<s.length()<<endl;
+    // cout<<reverseString(s);
+    
+    return 0;
+}
