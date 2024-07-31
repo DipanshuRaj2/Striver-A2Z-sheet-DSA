@@ -2,11 +2,9 @@
 using namespace std;
 int main()
 {
-    vector<int> arr(5, 0);
-    for (int i = 0; i < 5; i++)
-    {
-        cout << arr[i] << " ";
-        
+    string s = "abcde";
+    for(int i = 0; i<s.length(); i++){
+        cout<<s.substr(i)+ s.substr(0, i)<<"\n";
     }
     return 0;
 }
