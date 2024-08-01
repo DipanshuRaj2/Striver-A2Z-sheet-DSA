@@ -20,6 +20,7 @@ Output: 4
 */
 #include <bits/stdc++.h>
 using namespace std;
+/*
 bool check(int n){
     for(int i = 0; i<n/2; i++){
         if(i*i == n) return true;
@@ -33,6 +34,13 @@ int perfectSquare(vector<int>&arr){
         if(check(arr[i])) cnt++;
     }
     return cnt;
+}*/
+int perfectSquare(vector<int>&arr){
+    int cnt = 0;
+    for(int i  = 0; i<arr.size(); i++){
+        if(floor(double(sqrt(arr[i]))) == ceil(double(sqrt(arr[i])))) cnt++;
+    }
+    return cnt;
 }
 int main()
 {
@@ -40,18 +48,3 @@ int main()
     cout<<perfectSquare(arr);
     return 0;
 }
-// #include <bits/stdc++.h>
-// using namespace std;
-// int main()
-// {
-//    int n = 10000;
-//    int ans = 0;
-//    for(int i = 0; i<n/2; i= i+1){
-//     if(i* i == n){
-//         ans =  i;
-//         break;
-//     }
-//    }
-//    cout<<ans;
-//     return 0;
-// }
