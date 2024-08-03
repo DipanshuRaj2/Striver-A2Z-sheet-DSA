@@ -24,3 +24,4 @@ int main(){
     cin >> n >> m;
    printNum(n, m);
 } 
+// it is good think
