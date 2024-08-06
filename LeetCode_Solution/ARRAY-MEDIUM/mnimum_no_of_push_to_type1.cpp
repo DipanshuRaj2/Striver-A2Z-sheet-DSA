@@ -1,3 +1,4 @@
+//in type 1 there is in distinct character in the word;
 #include <bits/stdc++.h>
 using namespace std;
 class Solution {
@@ -22,7 +23,7 @@ public:
 int main()
 {
     Solution Solution;
-    string str = "xyzxyzxyzxyz";
+    string str = "abcdefghijlk";
     cout<< Solution.minimumPushes(str);
     return 0;
 }
