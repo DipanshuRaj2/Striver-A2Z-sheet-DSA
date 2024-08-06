@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    int n = pow(5, 2);
+    int n = 10^2;
     cout<<n;
     return 0;
 }
