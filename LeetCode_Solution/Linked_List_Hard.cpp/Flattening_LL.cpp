@@ -5,44 +5,37 @@ class Node
 public:
     int data;
     Node *next;
-    Node * bottom;
+    Node * child;
     Node(int data1)
     {
         data = data1;
         next = nullptr;
-        bottom = nullptr;
+        child = nullptr;
     }
 };
 Node* flatteningLL(Node* head){
+    vector<int>arr;
     Node* temp = head;
-    queue<Node*> qe;
-
     while(temp != nullptr){
-        if(temp -> bottom){
-            qe.push(temp -> bottom);
+        Node* t1 = temp;
+        while(t1 != nullptr){
+            arr.push_back(t1->data);
+            t1 = t1 -> child;
         }
-        temp = temp -> next;
-        if(!qe.empty() && temp -> next == nullptr){
-            temp -> next = qe.front();
-            qe.pop();
-        }
+        temp = temp->next;
     }
-    return head;  
-}
-Node* newflattingLL(Node* head){
-    Node* temp = head;
-    vector<int>ans;
-    while(temp != nullptr){
-        ans.push_back(temp->data);
-        temp = temp -> next;
+    sort(arr.begin(), arr.end());
+    for(int i = 0; i<arr.size(); i++){
+        cout<<arr[i]<<", ";
     }
-    sort(ans.begin(), ans.end());
-    head = new Node(ans[0]);
+    cout<<endl;
+    if(arr.size() == 0)return nullptr;
+    head = new Node(arr[0]);
     temp = head;
-    for(int i = 1; i<ans.size(); i++){
-        Node* newNode = new Node(ans[i]);
-        temp -> next = newNode;
-        temp = newNode;
+    for(int i = 1; i<arr.size(); i++){
+        Node* mover = new Node(arr[i]);
+        temp -> next = mover;
+        temp = mover;
     }
     return head;
 }
@@ -57,28 +50,27 @@ void print(Node* head){
 }
 main()
 {
-    Node *head = new Node(5);
-    head ->bottom = new Node(7);
-    head ->bottom -> bottom = new Node(8);
-    head ->bottom -> bottom -> bottom= new Node(30);
+    Node *head = new Node(1);
+    head ->child = new Node(2);
+    head ->child -> child = new Node(3);
+    
 
-    head->next = new Node(10);
-    head -> next -> bottom = new Node(20);
+    head->next = new Node(4);
+    head -> next -> child  = new Node(5);
+    head -> next -> child ->child  = new Node(6);
 
-    head->next->next = new Node(19);
-    head->next->next -> bottom = new Node(22);
-    head->next->next -> bottom -> bottom= new Node(50);
 
-    head->next->next->next = new Node(28);
-    head->next->next->next->bottom = new Node(35);
-    head->next->next->next->bottom ->bottom = new Node(40);
-    head->next->next->next->bottom ->bottom->bottom= new Node(45);
+    head->next->next = new Node(7);
+    head->next->next -> child = new Node(8);
+
+    head->next->next->next = new Node(9);
+    head->next->next->next->child = new Node(12);
+
+    head->next->next->next->next = new Node(20);
     
     head = flatteningLL(head);
     print(head);
 
-    head = newflattingLL(head);
-    print(head);
 
     return 0;
 }
