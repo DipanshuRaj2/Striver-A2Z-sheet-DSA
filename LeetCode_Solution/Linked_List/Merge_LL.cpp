@@ -11,7 +11,9 @@ public:
         next = nullptr;
     }
 };
-Node *mergeTwoLists(Node *list1, Node *list2)
+
+// brute force techinque use array
+Node *mergeTwoListsBrute(Node *list1, Node *list2)
 {
     vector<int> ans;
     Node *temp1 = list1;
@@ -38,6 +40,35 @@ Node *mergeTwoLists(Node *list1, Node *list2)
     }
     return newHead;
 }
+
+Node *mergeTwoListsOptimal(Node* list1, Node* list2){
+
+    Node* temp1 = list1;
+    Node* temp2 = list2;
+
+    Node* dummyNode = new Node(-1); 
+    Node* temp = dummyNode;
+
+    while(temp1!= nullptr && temp2 != nullptr){
+        if(temp1 -> data < temp2 -> data){
+            temp -> next = temp1;
+            temp = temp1;
+            temp1 = temp1 -> next;
+        }
+        else{
+            temp -> next = temp2;
+            temp = temp2;
+            temp2= temp2 -> next;
+        }
+     }
+    if(temp1 != nullptr){
+        temp -> next = temp1;
+    }
+    else{
+        temp -> next = temp2;
+    }
+    return dummyNode->next;
+}
 void print(Node* head){
     while(head != nullptr){
         cout <<head -> data<<"->";
@@ -60,7 +91,14 @@ main()
     print(head);
     print(head1);
 
-    head = mergeTwoLists(head, head1);
+
+    // head = mergeTwoListsBrute(head, head1);
+    // cout<<"Brute-force: ";
+    // print(head);
+
+
+    head = mergeTwoListsOptimal(head, head1);
+    cout<<"optimal: ";
     print(head);
     return 0;
 }
