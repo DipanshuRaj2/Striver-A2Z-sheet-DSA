@@ -3,7 +3,7 @@ using namespace std;
 class Solution {
     // Function to find the leaders in the array.
   public:
-  /*  brute force approach
+  // brute force approach
     vector<int> leaders(int n, vector<int>& arr) {
         // Code here
         vector<int>ans;
@@ -24,7 +24,7 @@ class Solution {
         }
         return ans;
     }
-    */
+    
     vector<int> Leaders(int n, vector<int>arr){
         int mini = INT_MIN;
         vector<int>ans;
