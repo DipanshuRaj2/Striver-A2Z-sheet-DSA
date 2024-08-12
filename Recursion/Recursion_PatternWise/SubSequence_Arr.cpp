@@ -14,9 +14,9 @@ void printf(int i, vector<int>&ds, vector<int>&arr, int n){
     printf(i+1, ds, arr, n);
     ds.pop_back();
 }
-int main()
+int main() 
 {
-    vector<int> arr = {3, 1, 2};
+    vector<int> arr = {1, 2};
     vector<int>ds;
     int n = arr.size();
     printf(0, ds, arr, n);
