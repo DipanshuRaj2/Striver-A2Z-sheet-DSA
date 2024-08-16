@@ -1,19 +1,23 @@
-#include <bits/stdc++.h>
-using namespace std;
-int main()
-{
-    vector<int>ans;
-    int cnt = 2;
-    int temp = 1;
-    int n = 10;
-    ans.push_back(temp);
-    for(int i = 0; i < n; i++){
-        temp = temp + cnt;
-        cnt++;
-        ans.push_back(temp);
-    }
-    for(int i = 0;i<ans.size(); i++){
-        cout<<ans[i]<<" ";
-    }
-    return 0;
-}
+// #include <bits/stdc++.h>
+// using namespace std;
+// int maximumSubArray(vector<int>&arr, int k)
+// {
+//     int len = 0;
+//     int maxi = 0;
+//     for(int i = 0; i<arr.size(); i++){
+//         for(int j = i+1; j<arr.size(); j++){
+//             if(arr[i] + arr[j] == k){
+//                 maxi = max(maxi, j-i+1);
+//             }
+//         }
+//     }
+//     return maxi;
+// }
+// int main()
+// {   
+//     vector<int>arr = {1 ,4 ,3 ,3 ,5 ,5};
+//     int k = 16;
+//     cout<<maximumSubArray(arr, k);
+
+//     return 0;
+// }
