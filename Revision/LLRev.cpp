@@ -1,54 +1,53 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 struct Node
 {
     int data;
     Node* next;
 
-    Node(int data1 , Node* next1){
-        data = data1;
-        next = next1;
-    }
-    Node(int data1){
-        data = data1;
+    Node(int d){
+        data = d;
         next = nullptr;
     }
-    
 };
-Node* convert2LL(vector<int>& arr){
-        Node* head = new Node(arr[0]);
-        Node* mover = head;
+Node* reverse(Node* head){
+    Node* prev = nullptr;
+    Node* temp = head;
+    while(temp != nullptr){
+        Node* front = temp->next;
+        temp -> next = prev;
+        prev = temp;
+        temp = front;
+    }
+    return prev;
+}
 
-        for(int i = 1; i<arr.size(); i++){
-            Node* temp = new Node(arr[i]);
-            mover->next = temp;
-            mover = mover->next;
-        }
-        return head;
+Node* convert2Arr(vector<int>&arr, Node* head){
+    Node* newHead = new Node(arr[0]);
+    Node* temp = newHead;
+    for(int i = 1; i<arr.size(); i++){
+        Node* mover = new Node(arr[i]);
+        temp -> next = mover;
+        temp = mover;
+    }
+    return newHead;
+}
+void print(Node* head){
+    while(head != nullptr){
+        cout<<head -> data<<"->";
+        head = head -> next;
+    }
+    cout<<"null";
+    cout<<endl;
 }
 
 int main()
 {
-    vector<int>arr = {2, 4, 5, 7, 8};
-    // Node y = Node(arr[0], nullptr);
-    // cout<< y.data;
-
-    // Node *x = new Node(arr[3]);
-    // cout<< x->next;
-
-    Node* head = convert2LL(arr);
-    cout<<head->next<<endl;
-    Node* temp = head;
-    int count = 0;
-    while(temp!= nullptr){
-        temp = temp->next;
-        cout<<temp <<" ";
-        count++;
-       
-    }
-    cout<<count;
-
-
+    vector<int>arr ={6, 2, 5, 4};
+    Node* head = nullptr;
+    head = convert2Arr(arr, head);
+    print(head);
+    head = reverse(head);
+    print(head);
     return 0;
-
 }
