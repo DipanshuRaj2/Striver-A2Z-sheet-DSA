@@ -4,8 +4,7 @@ int DigitSum(int n){
     if(n >= 0 && n <= 9){
         return n;
     }
-    int sum = n % 10;
-    return sum + DigitSum(n/10);
+    return (n%10) + DigitSum(n/10);
 }
 int main()
 {
