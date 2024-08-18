@@ -22,26 +22,34 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-string removeOfa(string &str, int idx, int n)
-{
-    // base case
-    if (idx == n)
-        return "";
-
-    string curr = "";
-
-    curr = curr +  str[idx];
-    if (str[idx] == 'a'){
-        return "" + removeOfa(str, idx+1, n);
+string removeOfA(string &str, int idx, int n){
+    if(idx == n) return str;
+    if(str  f[idx] == 'a'){
+        str.erase(remove(str.begin(), str.end(), 'a'),str.end());
     }
-    else{
-        return curr + removeOfa(str, idx+1, n);
-    } 
+    removeOfA(str, idx+1, n);
 }
+//another approoach
+// string removeOfa(string &str, int idx, int n)
+// {
+//     // base case
+//     if (idx == n)
+//         return "";
+
+//     string curr = "";
+
+//     curr = curr +  str[idx];
+//     if (str[idx] == 'a'){
+//         return "" + removeOfa(str, idx+1, n);
+//     }
+//     else{
+//         return curr + removeOfa(str, idx+1, n);
+//     } 
+// }
 int main()
 {
     string str = "abacx";
-    str = removeOfa(str, 0, str.size());
+    removeOfA(str, 0, str.size());
     cout<<str;
     return 0;
 }
