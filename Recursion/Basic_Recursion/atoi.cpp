@@ -51,7 +51,7 @@ int myAtoi(string &str)
   }
 int main()
 {
-    string str = "-12-3";
+    string str = "-+123";
     cout << myAtoi(str);
     return 0;
 }
