@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-string convertToBinary(int n){
+string convertToBinary(int n)
+{
     string bin = "";
-    while(n != 0){
+    while (n != 0)
+    {
         int ele = n % 2;
         bin.push_back(ele + '0');
         n /= 2;
@@ -10,10 +12,12 @@ string convertToBinary(int n){
     reverse(bin.begin(), bin.end());
     return bin;
 }
+// brute force
+/*
 int minBitFlips(int start, int goal){
     string str1 = convertToBinary(start);
     string str2 = convertToBinary(goal);
-    
+
     int n = max(str1.size(), str2.size());
     int m = min(str1.size(), str2.size());
     int paddingLength = n - m;
@@ -36,9 +40,20 @@ int minBitFlips(int start, int goal){
         }
     }
     return cnt;
+}*/
+int minBitFlips(int start, int goal)
+{
+    int cnt = 0;
+    int ans = start ^ goal;
+    for (int i = 0; i < 31; i++)
+    {
+        if ((1 << i) & ans)
+            cnt++;
+    }
+    return cnt;
 }
 int main()
 {
-    cout<<minBitFlips(3, 4);
+    cout << minBitFlips(3, 4);
     return 0;
 }
