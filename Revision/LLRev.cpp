@@ -37,12 +37,18 @@ void print(Node* head){
     }
 }
 int main(){
-    Node* head = new Node(10);
-    head -> next = new Node(20);
-    head -> next -> next = new Node(30);
-    head -> next -> next->next = new Node(40);
-    head -> next -> next -> next -> next = new Node(50);
-    head -> next -> next -> next -> next -> next = new Node(60);
+    int n = 6;
+    int data;
+    cin >> data;
+    Node* head = new Node(data);
+    Node* temp = head;
+    for(int i = 1; i<6; i++){
+        int data;
+        cin >> data;
+        Node* mover = new Node(data);
+        temp -> next = mover;
+        temp = mover;
+    }
    
     head = rotate(head, 2);
     print(head);
