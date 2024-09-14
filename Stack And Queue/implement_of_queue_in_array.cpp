@@ -18,7 +18,7 @@ public:
             start = 0;
             end = 0;
         }
-        else
+        else // current goes through out of index then current goes to 0 index
         {
             end = (end + 1) % maxSize;
         }
@@ -34,7 +34,7 @@ public:
         {
             start = end = -1;
         }
-        else
+        else // when current goes to out of index then it goes 0 index
         {
             start = (start + 1) % maxSize;
         }
@@ -59,6 +59,9 @@ int main()
     qe.push(1);
     qe.push(2);
     qe.push(3);
+    cout<<qe.queue[0]<<endl;
+    cout<<qe.pop()<<endl;
+    
     cout << "size of queue: " << qe.Size() << endl;
     cout << "top element of queue: " << qe.top() << endl;
     cout << "pop element of queue: " << qe.pop() << endl;
