@@ -41,7 +41,7 @@ public:
         current = current - 1;
         return ele;
     }
-    int top()
+    int front()
     {
         if (current == 0)
             cout << "underflow";
@@ -63,7 +63,7 @@ int main()
     cout<<qe.pop()<<endl;
     
     cout << "size of queue: " << qe.Size() << endl;
-    cout << "top element of queue: " << qe.top() << endl;
+    cout << "top element of queue: " << qe.front() << endl;
     cout << "pop element of queue: " << qe.pop() << endl;
     cout << "size after pop the element: " << qe.Size();
     return 0;
