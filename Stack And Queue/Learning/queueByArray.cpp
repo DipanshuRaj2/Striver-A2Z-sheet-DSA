@@ -18,7 +18,7 @@ public:
             start = 0;
             end = 0;
         }
-        else // current goes through out of index then current goes to 0 index
+        else // end goes through out of index then end goes to 0 index
         {
             end = (end + 1) % maxSize;
         }
@@ -34,7 +34,7 @@ public:
         {
             start = end = -1;
         }
-        else // when current goes to out of index then it goes 0 index
+        else // when start goes to out of index then it goes 0 index
         {
             start = (start + 1) % maxSize;
         }
