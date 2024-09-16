@@ -17,7 +17,7 @@ public:
     }
     void Pop()
     {
-        return q.pop();
+       q.pop();
     }
     int Top()
     {
