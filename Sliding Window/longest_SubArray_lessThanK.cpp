@@ -53,15 +53,14 @@ int longestSubArrayLessThanK(vector<int>& arr, int k){
               maxi = max(maxi, len);
               start = left;
               end = right;
-              
             }
             right++;
         }
-        else{
+        else{ // if you want find the subarray then do this while. if you want to only length then if/else condition is only right
           while(sum > k){
             sum -= arr[left];
             left++;
-         } 
+          }
         }
     }
     for(int i = start; i<=end; i++){
