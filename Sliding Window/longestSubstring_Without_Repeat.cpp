@@ -24,33 +24,61 @@ int main(){
 }
 */
 
-//optimal approach 
-// see that video of code with alisha
+
+// striver video of optimal approach
+
 #include<bits/stdc++.h>
 using namespace std;
-int countLongestSubstring(string s){
-    int n = s.length();
-    int maxi = 0;
-    set<char>st;
-    int start = 0;
-    int end = 0;
-    while(end < n){
-        auto it = st.find(s[end]);
-        if(it == st.end()){
-            int len = end - start + 1;
-            maxi = max(maxi, len);
-             st.insert(s[end]);
-            end++;
+int longestSubstring(string &s){
+    int l = 0; int r = 0; 
+    int maxLen = 0; int n = s.size();
+        vector<int>arr(255, -1);
+    while(r < n){
+        if(arr[s[r]] != -1){
+            if(arr[s[r]] >= l){
+                l = arr[s[r]] + 1;
+            }
+           int len = r - l + 1;
+            maxLen = max(maxLen, len);
         }
-        else{
-            st.erase(s[start]);
-            start++;
-        }
-    }
-    return maxi;
+        arr[s[r]] = r;
+        r++;
+    } 
+    return maxLen;
 }
 int main(){
     string s = "abcabcbb";
-    cout<<countLongestSubstring(s);
+    cout<<longestSubstring(s);
+
     return 0;
 }
+
+// see that video of code with alisha
+// #include<bits/stdc++.h>
+// using namespace std;
+// int countLongestSubstring(string s){
+//     int n = s.length();
+//     int maxi = 0;
+//     set<char>st;
+//     int start = 0;
+//     int end = 0;
+//     while(end < n){
+//         auto it = st.find(s[end]);
+//         if(it == st.end()){
+//             int len = end - start + 1;
+//             maxi = max(maxi, len);
+//              st.insert(s[end]);
+//             end++;
+//         }
+//         else{
+//             st.erase(s[start]);
+//             start++;
+//         }
+//     }
+//     return maxi;
+// }
+// int main(){
+//     string s = "abcabcbb";
+//     cout<<countLongestSubstring(s);
+//     return 0;
+// }
