@@ -21,4 +21,4 @@ int main(){
     int k = 3;
     cout<<maxScore(arr,k);
     return 0;
-}
+}  

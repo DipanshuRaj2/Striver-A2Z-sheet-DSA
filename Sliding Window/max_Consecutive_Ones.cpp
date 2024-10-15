@@ -17,7 +17,7 @@
 //     }
 //     return maxi;
 // }
-// int main()
+// int main()               
 // {
 //     vector<int>arr = {1,0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1};
 //     int k = 3;
