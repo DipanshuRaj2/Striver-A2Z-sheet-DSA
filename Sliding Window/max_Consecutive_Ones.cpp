@@ -33,7 +33,7 @@ int maxConsecutiveOnes(vector<int>&arr, int k ){
     int maxi = 0; int zeroes = 0;
     while(r < n){
         if(arr[r] == 0) zeroes++;
-            if(zeroes > k){ //while loop
+        if(zeroes > k){ //while loop
             if(arr[l] == 0){
                  zeroes--;
             }
