@@ -16,14 +16,23 @@ vector<int>nextGreaterElement(vector<int>&arr){
 }
 //optimal approach
 vector<int>nextGreaterElement1(vector<int>&arr){
-    vector<int>arr; stack<int>st;
+    vector<int>ans(arr.size()); stack<int>st;
     for(int i = arr.size()-1; i >= 0; i--){
-        
+        while(!st.empty() && st.top() < arr[i]){
+            st.pop();
+        }
+        if(st.empty()){
+            ans[i] = -1;
+        }
+        else
+            ans[i] = st.top();
+        st.push(arr[i]);
     }
+    return ans;
 }
 int main(){
     vector<int>arr = {6, 0, 8, 1, 3};
-    arr = nextGreaterElement(arr);
+    arr = nextGreaterElement1(arr);
     for(int i = 0; i<arr.size(); i++){
         cout<<arr[i]<<" "  ;  
     }
