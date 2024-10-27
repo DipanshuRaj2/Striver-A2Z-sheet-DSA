@@ -42,6 +42,8 @@
 // brute force will be easy
 // 3 sum
 //so I am using doing optimal approach
+
+/*
 #include<bits/stdc++.h>
 using namespace std;
 vector<vector<int>>threeSum(vector<int>&nums){
@@ -108,3 +110,53 @@ int main(){
     }
    return 0;
 }   
+
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        // i have sove this question similar to 3 sum problem little bit changes
+        vector<vector<int>> ans;
+        set<vector<int>>st;
+        int n = nums.size();
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                unordered_map<long long, int> ump; //{arr[k] , index} store;
+                for (int k = j + 1; k < n; k++) {
+                    long long sum = nums[i] + nums[j];
+                    sum += nums[k];
+                    long long rem = target - sum;
+                    if (ump.find(rem) != ump.end()) {
+                        vector<int> temp = {nums[i], nums[j], nums[k], int(rem)};
+                        sort(temp.begin(), temp.end());
+                        st.insert(temp);
+                    }
+                    ump[nums[k]] = k;
+                }
+            }
+        }
+        for(auto it: st){
+            ans.push_back(it);
+        }
+        return ans;
+    }
+};
+int main(){
+    vector<int>nums = {1,0,-1,0,-2,2};
+    int target = 0;
+    Solution* sol = new Solution();
+    vector<vector<int>>ans = sol->fourSum(nums, target);
+    for(int i = 0; i<ans.size(); i++){
+        cout<<"{";
+        for(int j = 0; j<ans[i].size(); j++){
+            cout<<ans[i][j]<<",";
+        }
+        cout<<"}";
+        cout<<endl;
+    }
+     
+}
