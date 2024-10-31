@@ -23,10 +23,9 @@ void bfs(TreeNode *root)
     {
         
     }
-    
-    }
     ans.push_back(level);
-}
+ }
+
 int main()
 {
     TreeNode *root = new TreeNode(1);
